@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="125fc6b8">
+        <description>Created after removal of "Tutorial" from Nephresa Documentation</description>
+        <accepts>tutorial.html</accepts>
+    </rule>
+    <rule id="3ada9859">
+        <description>Created after removal of "Overview" from Nephresa Documentation</description>
+        <accepts>Overview.html</accepts>
+    </rule>
+</rules>
