@@ -123,7 +123,25 @@ Reticulocytes, Hkt-corrected|NEPHRO_UKE_RETRICULOCYTES|Real|%|Reticulocyte conce
 Reticulocytes Reduction Index (RPI)|NEPHRO_RETRICULOCYTES_REDUCTION_INDEX|Real|N/A| |
 
 ### Iron Observables
-...
+An Iron Observables object (OpenBis type code `NEPHRO_IRON_OBSERVABLES`) represents a single measurement of iron-related
+observable patient parameters.
+Like most Observables object types, this object is not fundamentally different from `NEPHRO_OBSERVABLES`, and was
+merely extracted from the generic Observables type for performance reasons.
+Its additional attributes are:
+
+-|-|-|-
+**Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
+Transferrin|NEPHRO_TRANSFERRIN|Real|g/l|Transferrin concentration
+Transferrin Saturation|NEPHRO_TRANSFERRIN_SATURATION|Real|%| |
+Soluble Transferrin Receptor|NEPHRO_STFR|Real|g/l|Soluble transferrin receptor concentration
+Iron|NEPHRO_IRON|Real|ug/l|Iron concentration
+NTBI|SMART_NTBI|Real|ug/l|Non-transferrin-bound iron concentration
+FeS|NEPHRO_FE_S|Real|ug/l|Iron sulfite concentration
+Ferritin|NEPHRO_FERRITIN|Real|ug/l|Ferritin concentration
+CRP|NEPHRO_CRP|Real|mg/l|C-reactive protein concentration. Lower detection limit of 0.6 mg/l
+Erythroferron|ERFE|Real|ug/l|Erythroferron concentration
+Hamp|HAMP|Real|ug/l|Hepcidin concentration
+Total Iron Binding Capacity|NEPHRO_TIBC|Real|umol/l| |
 
 ### Observables
 ...
