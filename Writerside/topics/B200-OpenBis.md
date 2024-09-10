@@ -25,4 +25,4 @@ The OpenBis API is accessible via [](https://b200-openbis3.dkfz.de/openbis/openb
 application server interface or [](https://b200-openbis3.dkfz.de/datastore_server/rmi-data-store-server-v3) for the
 datastore server interface, using the same credentials as for the web interface.
 In Python and Java, the developers of OpenBis offer fully implemented libraries handling the interaction with the API.
-For further instructions on how to use them, please refer to the [openBIS documentation](https://openbis.readthedocs.io/en/20.10.x/user-documentation/advance-features/excel-import-service.html#property-type).
+For further instructions on how to use them, please refer to the [openBIS documentation](https://openbis.readthedocs.io/en/latest/software-developer-documentation/apis/).
