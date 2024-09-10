@@ -22,7 +22,8 @@ The Disease attribute is only stored in `SMART_PATIENT_INFO`, and can be looked 
 
 ## OpenBis Data Types
 As a table-based data repository, B200 OpenBis defines several "sample types" to hold data.
-A complete list of all available types can be found in the [openBIS documentation](https://openbis.readthedocs.io/en/20.10.x/user-documentation/advance-features/excel-import-service.html#property-type) in the section "property types", but for the most part, these data types are being used within the NephrESA project:
+A complete list of all available types can be found in the [openBIS documentation](https://openbis.readthedocs.io/en/20.10.x/user-documentation/advance-features/excel-import-service.html#property-type)
+in the section "property types", but for the most part, these data types are being used within the NephrESA project:
 
 -|-
 **Data Type**|**Description**
@@ -75,9 +76,9 @@ instead.
 An Adverse Events object (OpenBis type code `NEPHRO_ADVERSE_EVENTS`) represents a single medical event happening to a
 patient, like a recorded infarction or patient death.
 In addition to the identification info, an Adverse Event also contains these attributes:
-> Deprecation Notice: `NEPHRO_ADVERSE_EVENTS` does not use `TIMEPOINT_HOURS` or `DATE` as part of the identification info at the
-moment, but its own `NEPHRO7_START-DATE_APPLICATION-DATE` attribute instead.
-This is deprecated and will be fixed in a future patch.
+> Deprecation Notice: `NEPHRO_ADVERSE_EVENTS` does not use `TIMEPOINT_HOURS` or `DATE` as part of the identification
+> info at the moment, but its own `NEPHRO7_START-DATE_APPLICATION-DATE` attribute instead.
+> This is deprecated and will be fixed in a future patch.
 {style="warning"}
 
 -|-|-
@@ -102,6 +103,30 @@ Unit of Measurement|DOSE_UNIT|Varchar|The unit of the number in "Dose"
 Medication Type|NEPHRO_MEDICATION_TYPE|Varchar|A broad classification of the active ingredient, e.g. CERA, EPOALPHA, or VITAMIN_D
 Medication Name|NEPHRO_MEDICATION_NAME|Varchar|The full name of the medication
 PZN|NEPHRO_PZN|Integer|The PZN identifying the medication, if known
+
+### Observables
+An Observables objects (OpenBis type code `NEPHRO_OBSERVABLES`) represents a single measurement of observable patient
+parameters.
+Because the data of NephrESA comes from many different sources, a single measurement may contain any combination of
+parameters with varying degrees of overlap.
+It was decided that creating one or even multiple separate object type for every study or data set within the project is
+not feasible, and all data should be merged into as few object types as possible.
+Because of the uniformity and hight overlap of iron and hemo observables, these two sets of attributes were separated
+into their own object types as described in [](#hemo-observables) and
+[](#iron-observables), respectively.
+If any new attribute that is not already present in this or any other object type is required, it should by default be
+added to the Observables object type first.
+If any given subset of attributes ends up having a very high density or required very often, it should be considered to
+extract them from the Observables object type into a separate Observables types, similar to [](#hemo-observables) or
+[](#iron-observables).
+For a current list of attributes of the Observables object type, please refer to the [](B200-OpenBis.md).
+> Deviation from the defined standard: Due to the high sparsity within the Observables attributes, it was infeasible to
+> set all numerical attributes to -1 or `INTEGER.MAX_VALUE` if the original data had no values in the corresponding
+> fields as defined in [](#openbis-data-types).
+> Instead, attributes without values are left empty by default, unless the import process defines the source data of a
+> specific Observable object as being expected to have these values, in which case empty values are filled with a
+> suitable default value according to the standard.
+{style="note"}
 
 ### Hemo Observables
 A Hemo Observables object (OpenBis type code `NEPHRO_HEMO_OBSERVABLES`) represents a single measurement of hemo-related
@@ -142,6 +167,3 @@ CRP|NEPHRO_CRP|Real|mg/l|C-reactive protein concentration. Lower detection limit
 Erythroferron|ERFE|Real|ug/l|Erythroferron concentration
 Hamp|HAMP|Real|ug/l|Hepcidin concentration
 Total Iron Binding Capacity|NEPHRO_TIBC|Real|umol/l| |
-
-### Observables
-...
