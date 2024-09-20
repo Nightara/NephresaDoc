@@ -126,6 +126,7 @@ For a current list of attributes of the Observables object type, please refer to
 > Instead, attributes without values are left empty by default, unless the import process defines the source data of a
 > specific Observable object as being expected to have these values, in which case empty values are filled with a
 > suitable default value according to the standard.
+> This will not be fixed.
 {style="note"}
 
 ### Hemo Observables
