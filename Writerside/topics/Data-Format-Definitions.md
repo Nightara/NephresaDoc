@@ -20,7 +20,7 @@ Date|DATE|Date
 
 The Disease attribute is only stored in `SMART_PATIENT_INFO`, and can be looked up using the Patient ID field.
 
-## OpenBis Data Types
+## Patient-related Data Types
 As a table-based data repository, B200 OpenBis defines several "sample types" to hold data.
 A complete list of all available types can be found in the [openBIS documentation](https://openbis.readthedocs.io/en/20.10.x/user-documentation/advance-features/excel-import-service.html#property-type)
 in the section "property types", but for the most part, these data types are being used within the NephrESA project:
@@ -43,8 +43,8 @@ might have the same display name.
 Since attributes can and should be reused across OpenBis, not all OpenBis Identifiers follow the same naming principle,
 but in general, many OpenBis Identifiers used in NephrESA start with the prefix `NEPHRO_`.
 
-To ensure uniformity across all platforms involved in NephrESA, all data stored in B200 OpenBis always follows these
-conventions, unless specified otherwise:
+To ensure uniformity across all platforms involved in NephrESA, all patient-related data stored in B200 OpenBis always
+follows these conventions, unless specified otherwise:
 - Attributes are always stored in a uniform unit described by the attribute itself, and the values themselves pure numeric values without units wherever possible.
 - Attributes that generally don't apply to the measurement in question, like values that are simply not measured by the measurement method in question (E.g. blood pressure for lab measurements), are left empty.
 - Attributes that can be measured by the method in question but were not measured are set to an out-of-bounds value depending on the value in question (E.g. -1 for concentration, or `Integer.MIN_VALUE` for values that can be negative).
@@ -122,7 +122,7 @@ extract them from the Observables object type into a separate Observables types,
 For a current list of attributes of the Observables object type, please refer to the [](B200-OpenBis.md).
 > Deviation from the defined standard: Due to the high sparsity within the Observables attributes, it was infeasible to
 > set all numerical attributes to -1 or `INTEGER.MAX_VALUE` if the original data had no values in the corresponding
-> fields as defined in [](#openbis-data-types).
+> fields as defined in [](#patient-related-data-types).
 > Instead, attributes without values are left empty by default, unless the import process defines the source data of a
 > specific Observable object as being expected to have these values, in which case empty values are filled with a
 > suitable default value according to the standard.
@@ -167,3 +167,66 @@ CRP|NEPHRO_CRP|Real|mg/l|C-reactive protein concentration. Lower detection limit
 Erythroferron|ERFE|Real|ug/l|Erythroferron concentration
 Hamp|HAMP|Real|ug/l|Hepcidin concentration
 Total Iron Binding Capacity|NEPHRO_TIBC|Real|umol/l| |
+
+### ISAS Sample
+ISAS Samples (OpenBis type code `ISAS_SAMPLE`) contain information on protein concentration in patient blood plasma.
+In addition to the identification info, these objects contain the following fields:
+
+> Deprecation Notice: `ISAS_SAMPLE` does not use `TIMEPOINT_HOURS` as part of the identification info at the moment, but
+> the non-mandatory and less precise `ISAS_WEEK` field instead.
+> Due to this, `DATE` is mandatory for these objects.
+> This is deprecated and will be fixed in a future patch.
+{style="warning"}
+
+-|-|-|-
+**Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
+Week|ISAS_WEEK|Integer|Weeks|The week this measurement was taken in, relative to the first week as defined in `TIMEPOINT_HOURS`
+Protein Name|CALIBRATOR_PROTEIN_NAME|Varchar|N/A|Full protein name, including intra/extra domains
+Replicate Name|REPLICATE_NAME|Varchar|N/A| |
+Concentration|CONCENTRATION|Real|mg/l| |
+
+### ISAS NIST
+ISAS NIST objects (OpenBis type code `ISAS_NIST`) contain information on protein concentration in NIST plasma.
+In addition to the identification info, these objects contain the following fields:
+
+> Deprecation Notice: `ISAS_NIST` does not use `TIMEPOINT_HOURS` as part of the identification info at the moment, but
+> the non-mandatory and less precise `ISAS_WEEK` field instead.
+> Due to this, `DATE` is mandatory for these objects.
+> This is deprecated and will be fixed in a future patch.
+{style="warning"}
+
+-|-|-|-
+**Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
+Week|ISAS_WEEK|Integer|Weeks|The week this measurement was taken in, relative to the first week as defined in `TIMEPOINT_HOURS`
+Protein Name|CALIBRATOR_PROTEIN_NAME|Varchar|N/A|Full protein name, including intra/extra domains
+Replicate Name|REPLICATE_NAME|Varchar|N/A| |
+Concentration|CONCENTRATION|Real|mg/l| |
+
+### Nephro Weight
+A Nephro Weight object (OpenBis type code `NEPHRO_WEIGHT`) represents a weight measurement before and after dialysis.
+
+> Deprecation Notice: `NEPHRO_WEIGHT` does not use `TIMEPOINT_HOURS` as part of the identification info at the moment.
+> Due to this, `DATE` is mandatory for these objects.
+> `NEPHRO_WEIGHT_POST_HD` is of type Varchar, but should be Real.
+> This is deprecated and will be fixed in a future patch.
+{style="warning"}
+
+-|-|-|-
+**Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
+Weight (Prior HD)|NEPHRO_WEIGHT_PRIOR_HD|Real|kg|Patient weight before hemodialysis (wet weight)
+Weight (Post HD)|NEPHRO_WEIGHT_POST_HD|Varchar|kg|Patient weight after hemodialysis (dry weight)
+
+## Other Data Types
+Some data types within OpenBis are not directly related to patients, and thus don't follow the structure defined in
+[](#patient-related-data-types).
+
+### ISAS LoD and LLoQ
+An ISAS LoD and LLoQ object (OpenBis type code `ISAS_LOD_LLOQ`) specifies the limit of detection and lower limit of
+quantification for a given protein.
+Its attributes are:
+
+-|-|-|-
+**Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
+Protein Name|CALIBRATOR_PROTEIN_NAME|Varchar|N/A|Full protein name, including intra/extra domains
+LOD|ISAS_LOD|Real|mg/l|Limit of detection for the given protein
+LLOQ|ISAS_LLOQ|Real|mg/l|Lower limit of quantification for the given protein
