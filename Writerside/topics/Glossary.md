@@ -5,6 +5,7 @@ Term|Description
 DKFZ|Deutsches Krebsforchungszentrum
 UKE|Universitätsklinikum Hamburg-Eppendorf
 ISAS|Leibniz-Institut für Analytische Wissenschaften Dortmund
+NIST|National Institute of Standards and Technology
 B200 OpenBis|The [OpenBis](https://openbis.ch/) data repository managed by the Klingmüller group at DKFZ. This is the central data repository for all data handled in the NephrESA project.
 UKE REDCap|The [REDCap](https://www.project-redcap.org/) data repository managed by UKE.
 API|Application Programmable Interface

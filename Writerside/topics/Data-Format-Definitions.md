@@ -185,23 +185,6 @@ Protein Name|CALIBRATOR_PROTEIN_NAME|Varchar|N/A|Full protein name, including in
 Replicate Name|REPLICATE_NAME|Varchar|N/A| |
 Concentration|CONCENTRATION|Real|mg/l| |
 
-### ISAS NIST
-ISAS NIST objects (OpenBis type code `ISAS_NIST`) contain information on protein concentration in NIST plasma.
-In addition to the identification info, these objects contain the following fields:
-
-> Deprecation Notice: `ISAS_NIST` does not use `TIMEPOINT_HOURS` as part of the identification info at the moment, but
-> the non-mandatory and less precise `ISAS_WEEK` field instead.
-> Due to this, `DATE` is mandatory for these objects.
-> This is deprecated and will be fixed in a future patch.
-{style="warning"}
-
--|-|-|-
-**Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
-Week|ISAS_WEEK|Integer|Weeks|The week this measurement was taken in, relative to the first week as defined in `TIMEPOINT_HOURS`
-Protein Name|CALIBRATOR_PROTEIN_NAME|Varchar|N/A|Full protein name, including intra/extra domains
-Replicate Name|REPLICATE_NAME|Varchar|N/A| |
-Concentration|CONCENTRATION|Real|mg/l| |
-
 ### Nephro Weight
 A Nephro Weight object (OpenBis type code `NEPHRO_WEIGHT`) represents a weight measurement before and after dialysis.
 
@@ -219,6 +202,21 @@ Weight (Post HD)|NEPHRO_WEIGHT_POST_HD|Varchar|kg|Patient weight after hemodialy
 ## Other Data Types
 Some data types within OpenBis are not directly related to patients, and thus don't follow the structure defined in
 [](#patient-related-data-types).
+
+### ISAS NIST
+ISAS NIST objects (OpenBis type code `ISAS_NIST`) contain reference values for [](#isas-sample) objects [certified by
+NIST](https://www.nist.gov/glossary-term/20016).
+
+> Deprecation Notice: `ISAS_NIST` has multiple identification info fields that are not in use and will not be listed
+> here.
+> They will be removed in a future patch.
+{style="warning"}
+
+-|-|-|-
+**Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
+Protein Name|CALIBRATOR_PROTEIN_NAME|Varchar|N/A|Full protein name, including intra/extra domains
+Replicate Name|REPLICATE_NAME|Varchar|N/A| |
+Concentration|CONCENTRATION|Real|mg/l| |
 
 ### ISAS LoD and LLoQ
 An ISAS LoD and LLoQ object (OpenBis type code `ISAS_LOD_LLOQ`) specifies the limit of detection and lower limit of
