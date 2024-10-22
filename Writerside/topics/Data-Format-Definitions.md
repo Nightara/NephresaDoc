@@ -111,7 +111,7 @@ Because the data of NephrESA comes from many different sources, a single measure
 parameters with varying degrees of overlap.
 It was decided that creating one or even multiple separate object type for every study or data set within the project is
 not feasible, and all data should be merged into as few object types as possible.
-Because of the uniformity and hight overlap of iron and hemo observables, these two sets of attributes were separated
+Because of the uniformity and high overlap of iron and hemo observables, these two sets of attributes were separated
 into their own object types as described in [](#hemo-observables) and
 [](#iron-observables), respectively.
 If any new attribute that is not already present in this or any other object type is required, it should by default be
@@ -138,7 +138,7 @@ Its additional attributes are:
 
 -|-|-|-
 **Attribute**|**OpenBis Identifier**|**Data Type**|**Unit**|**Description**
-Data Source|NEPHRO_DATA_SOURCE|Varchar|N/A|LAB if the measurements were made in a laboratory, DIALYSIS if they were taken by a dialysis machine, or BGA if they were generated from a blood gas analysis
+Data Source|NEPHRO_DATA_SOURCE|Varchar|N/A|CLINICAL_LAB or LAB if the measurements were made in a clinical or other laboratory (Respectively), DIALYSIS if they were taken by a dialysis machine, or BGA if they were generated from a blood gas analysis
 Hemoglobin|NEPHRO_HEMOGLOBIN_I|Real|g/dl|Hemoglobin concentration
 Eryhrocyte Concentration|NEPHRO_UKE_ERYTHRO|Real|billion/l| |
 Total Hypochromic Erythrocyte Fraction|NEPHRO_RBC_HYPO|Real|%| |
