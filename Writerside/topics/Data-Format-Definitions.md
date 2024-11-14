@@ -21,7 +21,7 @@ Date|DATE|Date
 The Disease attribute is only stored in `SMART_PATIENT_INFO`, and can be looked up using the Patient ID field.
 
 ## Patient-related Data Types
-As a table-based data repository, B200 OpenBis defines several "sample types" to hold data.
+As a table-based data repository, B200 OpenBis defines several "object types" to hold data.
 A complete list of all available types can be found in the [openBIS documentation](https://openbis.readthedocs.io/en/20.10.x/user-documentation/advance-features/excel-import-service.html#property-type)
 in the section "property types", but for the most part, these data types are being used within the NephrESA project:
 
