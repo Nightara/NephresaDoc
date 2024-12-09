@@ -72,11 +72,11 @@ of the patient, but rather be kept at the initial value.
 To track changes in e.g. weight or BMI, other objects like `NEPHRO_WEIGHT` or `NEPHRO_OBSERVABLES` should be used
 instead.
 
-### Adverse Events
-An Adverse Events object (OpenBis type code `NEPHRO_ADVERSE_EVENTS`) represents a single medical event happening to a
+### Adverse Event
+An Adverse Event object (OpenBis type code `NEPHRO_ADVERSE_EVENT`) represents a single medical event happening to a
 patient, like a recorded infarction or patient death.
 In addition to the identification info, an Adverse Event also contains these attributes:
-> Deprecation Notice: `NEPHRO_ADVERSE_EVENTS` does not use `TIMEPOINT_HOURS` or `DATE` as part of the identification
+> Deprecation Notice: `NEPHRO_ADVERSE_EVENT` does not use `TIMEPOINT_HOURS` or `DATE` as part of the identification
 > info at the moment, but its own `NEPHRO7_START-DATE_APPLICATION-DATE` attribute instead.
 > This is deprecated and will be fixed in a future patch.
 {style="warning"}
