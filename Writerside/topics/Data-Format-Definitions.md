@@ -17,8 +17,9 @@ Study ID|STUDY_ID|Varchar
 Patient ID|NEPHRO_PATIENT_ID|Varchar
 Timepoint|TIMEPOINT_HOURS|Real
 Date|DATE|Date
+Disease*|DISEASE|Varchar
 
-The Disease attribute is only stored in `SMART_PATIENT_INFO`, and can be looked up using the Patient ID field.
+*The Disease attribute is only stored in `SMART_PATIENT_INFO`, and can be looked up using the Patient ID field.
 
 ## Patient-related Data Types
 As a table-based data repository, B200 OpenBis defines several "object types" to hold data.
