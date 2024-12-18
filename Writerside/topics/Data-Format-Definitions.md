@@ -21,6 +21,10 @@ Disease*|DISEASE|Varchar
 
 *The Disease attribute is only stored in `SMART_PATIENT_INFO`, and can be looked up using the Patient ID field.
 
+## Data Changes
+Any changes to data from the original raw data are documented in the `COMMENTS` field of the corresponding OpenBis
+object with the date of the change, a short description, and a brief reason for the change.
+
 ## Patient-related Data Types
 As a table-based data repository, B200 OpenBis defines several "object types" to hold data.
 A complete list of all available types can be found in the [openBIS documentation](https://openbis.readthedocs.io/en/20.10.x/user-documentation/advance-features/excel-import-service.html#property-type)
