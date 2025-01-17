@@ -10,5 +10,6 @@
     <toc-element topic="B200-OpenBis.md"/>
     <toc-element topic="Data-Format-Definitions.md"/>
     <toc-element topic="UKE-Data-Flow.md"/>
+    <toc-element topic="REST-API.md"/>
     <toc-element topic="Glossary.md"/>
 </instance-profile>
